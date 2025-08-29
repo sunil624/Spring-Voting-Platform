@@ -34,6 +34,7 @@ public class EmpController {
         return empService.updateEmp(updateEmp, empId);
     }
 
+/*
     @ExceptionHandler(value = { NoSuchEmpExistsException.class })
     @ResponseStatus(HttpStatus.NOT_FOUND)
     public ErrorResponse handleNoSuchEmpExistsException(NoSuchEmpExistsException noSuchEmpExistsException){
@@ -47,4 +48,5 @@ public class EmpController {
         ErrorResponse errorResponse = new ErrorResponse(HttpStatus.CONFLICT.value(), empAlreadyExistsException.getMessage());
         return errorResponse;
     }
+*/
 }
