@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class EmpService {
-    private EmpRepository empRepository;
+    final private EmpRepository empRepository;
     @Autowired
     public EmpService(EmpRepository empRepository) {
         this.empRepository = empRepository;
@@ -25,7 +25,7 @@ public class EmpService {
     public Emp getEmp(Integer empId){
         Emp e = empRepository.findById(empId).orElse(null);
         if(e==null){
-            throw new NoSuchEmpExistsException("Emp with id "+empId+"does not exists.");
+            throw new NoSuchEmpExistsException("Emp with id "+empId+" does not exists.");
         }
         return e;
     }
@@ -33,7 +33,7 @@ public class EmpService {
     public String updateEmp(Emp emp, Integer empId){
         Emp e = empRepository.findById(empId).orElse(null);
         if(e==null){
-            throw new NoSuchEmpExistsException("Emp with id "+empId+"does not exists.");
+            throw new NoSuchEmpExistsException("Emp with id "+empId+" does not exists.");
         }
         e.setEname(emp.getEname());
         e.setSal(emp.getSal());
