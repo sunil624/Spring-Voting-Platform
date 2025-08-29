@@ -1,6 +1,5 @@
 package com.example.votingapk;
 
-import com.example.votingapk.dto.User;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 

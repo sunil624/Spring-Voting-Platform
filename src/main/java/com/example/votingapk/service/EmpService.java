@@ -1,5 +1,6 @@
 package com.example.votingapk.service;
 
+import com.example.votingapk.dto.EmpUpdateDTO;
 import com.example.votingapk.entity.Emp;
 import com.example.votingapk.exception.EmpAlreadyExistsException;
 import com.example.votingapk.exception.NoSuchEmpExistsException;
@@ -30,13 +31,20 @@ public class EmpService {
         return e;
     }
 
-    public String updateEmp(Emp emp, Integer empId){
+    public String updateEmp(EmpUpdateDTO empDTO, Integer empId){
         Emp e = empRepository.findById(empId).orElse(null);
         if(e==null){
             throw new NoSuchEmpExistsException("Emp with id "+empId+" does not exists.");
         }
-        e.setEname(emp.getEname());
-        e.setSal(emp.getSal());
+        if(empDTO.getEname()==null && empDTO.getSal()==null){
+            throw new RuntimeException("Empty object not allowed for update.");
+        }
+        if(empDTO.getEname()!=null){
+            e.setEname(empDTO.getEname());
+        }
+        if (empDTO.getSal()!=null){
+            e.setSal(empDTO.getSal());
+        }
         empRepository.save(e);
         return "Emp update successfully";
     }

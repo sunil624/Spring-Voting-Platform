@@ -1,5 +1,6 @@
 package com.example.votingapk.controllers;
 
+import com.example.votingapk.dto.EmpUpdateDTO;
 import com.example.votingapk.entity.Emp;
 import com.example.votingapk.exception.EmpAlreadyExistsException;
 import com.example.votingapk.exception.ErrorResponse;
@@ -31,8 +32,8 @@ public class EmpController {
 
 
     @PutMapping("/{empId}")
-    public String updateEmp(@Valid @RequestBody Emp updateEmp, @PathVariable("empId") Integer empId){
-        return empService.updateEmp(updateEmp, empId);
+    public String updateEmp(@Valid @RequestBody EmpUpdateDTO empDTO, @PathVariable("empId") Integer empId){
+        return empService.updateEmp(empDTO, empId);
     }
 
 /*
