@@ -5,6 +5,7 @@ import com.example.votingapk.exception.EmpAlreadyExistsException;
 import com.example.votingapk.exception.ErrorResponse;
 import com.example.votingapk.exception.NoSuchEmpExistsException;
 import com.example.votingapk.service.EmpService;
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,7 +19,7 @@ public class EmpController {
     }
 
     @PostMapping("/add")
-    public String addEmp(@RequestBody Emp emp){
+    public String addEmp(@Valid @RequestBody Emp emp){
         return empService.addEmp(emp);
     }
 
@@ -30,7 +31,7 @@ public class EmpController {
 
 
     @PutMapping("/{empId}")
-    public String updateEmp(@RequestBody Emp updateEmp, @PathVariable("empId") Integer empId){
+    public String updateEmp(@Valid @RequestBody Emp updateEmp, @PathVariable("empId") Integer empId){
         return empService.updateEmp(updateEmp, empId);
     }
 
